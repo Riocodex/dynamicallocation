@@ -109,7 +109,6 @@ int main (int argc, char* argv[])
     int numbersFound = 0;//keeping track of numbers in the file
 
     while(fgets(buffer,buffer_size,file_pointer) != NULL){
-        printf("%s",buffer);
         numbersFound++;
          //storing the numbers in the array
         numToBeDoubled[numbersFound] = atoi(buffer);
@@ -118,14 +117,13 @@ int main (int argc, char* argv[])
         alreadDoubledNums[numbersFound] = answer;
         
     }
-    printf("the number of numbers in the file are %d",numbersFound);
     fclose(file_pointer);
 
     file_pointer = fopen("doubledNumbers.txt","w");
 
     //writing in the file using fputs()
 
-    fputs("The result of the numbers doubled in  are: ",file_pointer);
+    fputs("The result of the numbers doubled in  are: \n",file_pointer);
     
 
     // //writing with formats
@@ -136,7 +134,7 @@ int main (int argc, char* argv[])
 
     //formatting and showing users the answers and writing to  file
    
-    for (int i = 0; i <= numbersFound; i++) {
+    for (int i = 1; i <= numbersFound; i++) {
         fprintf(file_pointer,"%d\n",alreadDoubledNums[i]);//writing results to file
         
     }
