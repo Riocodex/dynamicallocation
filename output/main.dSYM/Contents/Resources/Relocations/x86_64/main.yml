@@ -2,7 +2,7 @@
 triple:          'x86_64-apple-darwin'
 binary-path:     '/Users/mac/Documents/code/School/class2/basics/output/main'
 relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _doubleCrey, symObjAddr: 0x0, symBinAddr: 0x100003E70, symSize: 0x20 }
-  - { offsetInCU: 0x42, offset: 0x42, size: 0x8, addend: 0x0, symName: _doubleCrey, symObjAddr: 0x0, symBinAddr: 0x100003E70, symSize: 0x20 }
-  - { offsetInCU: 0x78, offset: 0x78, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x20, symBinAddr: 0x100003E90, symSize: 0xE3 }
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _doubleCrey, symObjAddr: 0x0, symBinAddr: 0x100003BF0, symSize: 0x20 }
+  - { offsetInCU: 0x4E, offset: 0x4E, size: 0x8, addend: 0x0, symName: _doubleCrey, symObjAddr: 0x0, symBinAddr: 0x100003BF0, symSize: 0x20 }
+  - { offsetInCU: 0x84, offset: 0x84, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x20, symBinAddr: 0x100003C10, symSize: 0x2E3 }
 ...

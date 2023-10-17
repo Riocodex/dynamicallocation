@@ -7,7 +7,10 @@ int doubleCrey(int a ){
 }
 int main (int argc, char* argv[])
 {
-    //making sure command line inputs are not more than 1
+
+    //----------TASK 1 ----------------
+
+    // //making sure command line inputs are not more than 1
     if(argc == 1){
         printf("wrong number of arguments");
         return 1;
@@ -20,51 +23,53 @@ int main (int argc, char* argv[])
 
     
 
-    for (int i = 1; i < argc; i++)
-    {
+    // for (int i = 1; i < argc; i++)
+    // {
 
-        //storing the numbers in the array
-        numToBeDoubled[i] = atoi(argv[i]);
-        int answer = doubleCrey(atoi(argv[i]));//that atoi is how we will type cast
-        //storing already doubled numbers in the array
-        alreadDoubledNums[i] = answer;
-        // printf("%s x 2 = %d\n", argv[i], answer);
-    }
+    //     //storing the numbers in the array
+    //     numToBeDoubled[i] = atoi(argv[i]);
+    //     int answer = doubleCrey(atoi(argv[i]));//that atoi is how we will type cast
+    //     //storing already doubled numbers in the array
+    //     alreadDoubledNums[i] = answer;
+    //     // printf("%s x 2 = %d\n", argv[i], answer);
+    // }
     
-     printf("you inputted these numbers[");
-    for (int i = 1; i < argc; i++) {
-        if (i < argc - 1) {
-            printf("%d, ", numToBeDoubled[i]);
-        } else {
-            printf("%d", numToBeDoubled[i]);
-        }
-    }
-    printf("]\n");
 
-     printf("the result is [");
-    for (int i = 1; i < argc; i++) {
-        if (i < argc - 1) {
-            printf("%d, ", alreadDoubledNums[i]);
-        } else {
-            printf("%d", alreadDoubledNums[i]);
-        }
-    }
-    printf("]\n");
+    // ///formatting and showing users the number they put in an array
+    //  printf("you inputted these numbers[");
+    // for (int i = 1; i < argc; i++) {
+    //     if (i < argc - 1) {
+    //         printf("%d, ", numToBeDoubled[i]);
+    //     } else {
+    //         printf("%d", numToBeDoubled[i]);
+    //     }
+    // }
+    // printf("]\n");
 
-    // freeing  the array
-    free(numToBeDoubled);
-    free(alreadDoubledNums);
+
+    // //formatting and showing users the answers
+    //  printf("the result is [");
+    // for (int i = 1; i < argc; i++) {
+    //     if (i < argc - 1) {
+    //         printf("%d, ", alreadDoubledNums[i]);//checks if the element is the last in the array to put the comma
+    //     } else {
+    //         printf("%d", alreadDoubledNums[i]); //if it isnt the element is left alst without a comma.
+    //     }
+    // }
+    // printf("]\n");
+
+    // // freeing  the array
+    // free(numToBeDoubled);
+    // free(alreadDoubledNums);
 
     // --------- END OF TASK 1 ------------
 
-
-
-    //READING A FILE
+    // READING A FILE
     // int buffer_size = 20000;
     // FILE *file_pointer;
 
     // char buffer[buffer_size];
-    // file_pointer = fopen("sample.txt","r");
+    // file_pointer = fopen(argv,"r");
 
     // int iter = 1;
 
@@ -93,12 +98,57 @@ int main (int argc, char* argv[])
     // fclose(file_pointer);
 
 
-  
+    //--------TASK 2---------
+    // READING THE  FILE
+    int buffer_size = 20000;
+    FILE *file_pointer;
 
+    char buffer[buffer_size];
+    file_pointer = fopen(argv[1],"r");//assigning file from the command line
 
+    int numbersFound = 0;//keeping track of numbers in the file
 
+    while(fgets(buffer,buffer_size,file_pointer) != NULL){
+        printf("%s",buffer);
+        numbersFound++;
+         //storing the numbers in the array
+        numToBeDoubled[numbersFound] = atoi(buffer);
+        int answer = doubleCrey(atoi(buffer));//that atoi is how we will type cast
+        //storing already doubled numbers in the array
+        alreadDoubledNums[numbersFound] = answer;
+        
+    }
+    printf("the number of numbers in the file are %d",numbersFound);
+    fclose(file_pointer);
 
+    file_pointer = fopen("doubledNumbers.txt","w");
+
+    //writing in the file using fputs()
+
+    fputs("The result of the numbers doubled in  are: ",file_pointer);
     
+
+    // //writing with formats
+    // for(int index = 0; index < 100; index ++){
+    //     fprintf(file_pointer,"%d\n",index);
+    // }
+
+
+    //formatting and showing users the answers and writing to  file
+   
+    for (int i = 0; i <= numbersFound; i++) {
+        fprintf(file_pointer,"%d\n",alreadDoubledNums[i]);//writing results to file
+        
+    }
+
+    // freeing  the array
+    free(numToBeDoubled);
+    free(alreadDoubledNums);
+
+    fclose(file_pointer);
+
+
+
 
     
     //task 1 : just like this , create 2 arrays ,one array to store the arguments of the user input through command line and the othher one to store the results
